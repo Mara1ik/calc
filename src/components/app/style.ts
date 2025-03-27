@@ -12,6 +12,7 @@ export const AppWrapper = styled.div`
 `;
 
 export const Task = styled.div`
+  height: 28rem;
   font-size: 24rem;
   font-weight: 400;
   color: ${colors.lightGrey};

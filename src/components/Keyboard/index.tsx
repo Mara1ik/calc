@@ -1,12 +1,25 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, MouseEvent } from "react";
 import { SmallStyledButton, StyledButton, Wrapper } from "./style";
 import { colors } from "../../globalStyle";
 
-interface keyboardProps {}
+interface keyboardProps {
+  addSymbol: (symbol: string) => void;
+  deleteSymbol(): void;
+  clearTask(): void;
+}
 
-const Keyboard: FunctionComponent<keyboardProps> = () => {
+const Keyboard: FunctionComponent<keyboardProps> = ({
+  addSymbol,
+  deleteSymbol,
+  clearTask,
+}) => {
+  function onKeyboardClick(e: any) {
+    const symbol = e.target.textContent;
+    if (symbol !== "=") addSymbol(symbol);
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onClick={onKeyboardClick}>
       <SmallStyledButton id="e">e</SmallStyledButton>
       <SmallStyledButton id="u">μ</SmallStyledButton>
       <SmallStyledButton id="sin">sin</SmallStyledButton>
@@ -15,13 +28,14 @@ const Keyboard: FunctionComponent<keyboardProps> = () => {
         $buttonColor={colors.grey}
         $textColor={colors.lightGrey}
         id="ac"
+        onClick={clearTask}
       >
         Ac
       </StyledButton>
       <StyledButton
         $buttonColor={colors.grey}
         $textColor={colors.lightGrey}
-        id="delete"
+        onClick={deleteSymbol}
       >
         <svg
           width="24"

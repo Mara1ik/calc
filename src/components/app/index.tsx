@@ -1,16 +1,43 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import { AppWrapper, Result, Task } from "./style";
 import Keyboard from "../Keyboard";
 
-interface AppProps {}
+const App: FunctionComponent = () => {
+  const [task, setTask] = useState<string>("");
 
-const App: FunctionComponent<AppProps> = () => {
+  function addSymbol(symbol: string) {
+    setTask((val) => {
+      if (
+        symbol.length < 2 &&
+        val[val.length] !== "-" &&
+        val[val.length] !== "+" &&
+        val[val.length] !== "/" &&
+        val[val.length] !== "*"
+      ) {
+        return val + symbol;
+      } else {
+        return "";
+      }
+    });
+  }
+
+  function deleteSymbol() {
+    setTask((val) => val.slice(0, -1));
+  }
+
+  function clearTask() {
+    setTask((val) => "");
+  }
+
   return (
     <AppWrapper>
-      <Task>6000/2+3227*2</Task>
+      <Task>{task}</Task>
       <Result>=12,454</Result>
-      <Keyboard>
-      </Keyboard>
+      <Keyboard
+        addSymbol={addSymbol}
+        deleteSymbol={deleteSymbol}
+        clearTask={clearTask}
+      />
     </AppWrapper>
   );
 };
