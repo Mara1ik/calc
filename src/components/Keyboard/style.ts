@@ -3,32 +3,64 @@ import { colors } from "../../globalStyle";
 
 export const Wrapper = styled.div`
   margin-top: 75rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20rem;
 
-  .div1 {
-    grid-area: 6 / 1 / 7 / 3;
+  #plus {
+    height: 96rem;
+    position: relative;
+    top: 6rem;
   }
-  .div2 {
-    grid-area: 5 / 4 / 7 / 5;
+
+  #ac {
+    font-size: 24rem;
+    margin-bottom: 20rem;
   }
-  .div3 {
-    grid-area: 3 / 4 / 5 / 5;
+
+  #equals {
+    height: 96rem;
+    position: relative;
+    top: 20rem;
+  }
+
+  #one,
+  #two,
+  #three {
+    position: relative;
+    top: -36rem;
+  }
+
+  #zero,
+  #point {
+    position: relative;
+    top: -56rem;
+  }
+
+  #zero {
+    width: 144rem;
   }
 `;
-export const StyledButton = styled.button`
-  color: ${colors.lightGrey};
+export const StyledButton = styled.button<{
+  $buttonColor?: string;
+  $textColor?: string;
+}>`
+  width: 61.5rem;
+  height: 60rem;
+  color: ${(props) => props.$textColor || colors.blue};
   border-radius: 16px;
-  width: 100%;
-  height: 62rem;
-  background-color: ${colors.grey};
+  background-color: ${(props) => props.$buttonColor || colors.darkGrey};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16rem;
+  svg {
+    fill: ${(props) => props.$textColor || colors.blue};
+  }
 `;
 
 export const SmallStyledButton = styled(StyledButton)`
-  color: ${colors.blue};
-  border-radius: 24px;
   height: 40rem;
-  background-color: ${colors.darkGrey};
+  border-radius: 24px;
+  font-size: 24rem;
 `;

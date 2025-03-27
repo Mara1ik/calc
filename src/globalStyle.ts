@@ -12,12 +12,7 @@ export const colors = {
 };
 
 const GlobalStyle = createGlobalStyle`
-    html {
-        font-size: calc(1vw  / 16);
-    }
-
-    body {
-        height: 100vh;
+    * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -25,14 +20,25 @@ const GlobalStyle = createGlobalStyle`
         color: ${colors.lightBlue};
         font-size: 32rem;
         font-weight: 500;
+
+    }
+
+    html {
+        font-size: calc(1vw  / 16);
+    }
+
+    body {
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #daf0ff;
     }
 
     button {
         font-family: "Poppins", sans-serif;
-        font-size: 24rem;
+        font-size: 36rem;
+        font-weight: 500;
         border: none;
         background: transparent;
         padding: 0;

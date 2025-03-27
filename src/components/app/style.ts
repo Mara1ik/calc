@@ -8,6 +8,7 @@ export const AppWrapper = styled.div`
   height: 812rem;
   background-color: ${colors.black};
   padding: 40rem 34rem;
+  box-shadow: 88rem 51rem 140px ${colors.blue};
 `;
 
 export const Task = styled.div`
